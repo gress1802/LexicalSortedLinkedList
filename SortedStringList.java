@@ -109,7 +109,8 @@ public class SortedStringList {
         temp = heads[1];
         while(temp.next[1] != null){
             ret = ret + temp.data;
-        } 
+        }
+        return ret; 
     }
 
     public static void main(String[] args){
