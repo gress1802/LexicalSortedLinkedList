@@ -106,6 +106,7 @@ public class SortedStringList {
 
         while(temp.next[0]!= null){
             ret = ret + temp.data;
+            temp = temp.next[0];
         }
         ret = ret + "\n";
         temp = heads[1];
@@ -113,6 +114,7 @@ public class SortedStringList {
         ret = ret + heads[1];
         while(temp.next[1] != null){
             ret = ret + temp.data;
+            temp = temp.next[1];
         }
         return ret; 
     }
