@@ -73,7 +73,7 @@ public class SortedStringList {
                     heads[1] = temp.next[0];
                 }else{ 
                     while(temp3.next[1].data.length()>s.length()){
-                        temp3 = temp3.next[1]
+                        temp3 = temp3.next[1];
                         if(temp3.next[1] == null){ //end of list
                             temp3.next[1] = temp;
                         }
@@ -97,6 +97,20 @@ public class SortedStringList {
  
     public void descPrint() { 
         //print a comma delimited list of the strings in descending length order 
+    }
+
+    public String toString(){ //Making debugging easier
+        String ret = "The list in ascending lexical order:";
+        Node temp = heads[0];
+        while(temp.next[0]!= null){
+            ret = ret + temp.data;
+        }
+        ret = ret + "\n" 
+    }
+
+    public static void main(String[] args){
+        SortedStringList newList = new SortedStringList();
+        newList.insert("Joe");
     }
  
 }
