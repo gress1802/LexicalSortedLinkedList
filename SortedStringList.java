@@ -52,10 +52,11 @@ public class SortedStringList {
             
         
         }else{
-            //Start by inserting changing the ascending lexical order list
+            //inserting changing the ascending lexical order list
             Node temp = heads[0];
-            if(temp.data.compareTo(s)<0){//this is the case where the node containing s must be the head
-
+            if(heads[0].data.compareTo(s)<0){//this is the case where the node containing s must be the head
+                heads[0] = new Node(s,temp.next[0],null);
+                //insert part that sets what next[1] is
             }
             else{
                 while(temp.next[0].data.compareTo(s)>0){ //all other cases
@@ -66,6 +67,19 @@ public class SortedStringList {
                 }
                 Node temp2 = temp.next[0]; //adds node at the correct position in the list
                 temp.next[0] = new Node(s,temp2,null);
+                //Now finding what next[1] will be for this node
+                Node temp3 = heads[1];
+                if(heads[1].data.length()<s.length()){ //setting the new node containing s as head[1]
+                    heads[1] = temp.next[0];
+                }else{ 
+                    while(temp3.next[1].data.length()>s.length()){
+                        temp3 = temp3.next[1]
+                        if(temp3.next[1] == null){ //end of list
+                            temp3.next[1] = temp;
+                        }
+                    }
+                    temp.next[1] = temp3;
+                }
             }
 
         }
