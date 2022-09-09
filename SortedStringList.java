@@ -105,7 +105,7 @@ public class SortedStringList {
         while(temp.next[0]!= null){
             ret = ret + temp.data;
         }
-        ret = ret + "\n" 
+        ret = ret + "\n"; 
     }
 
     public static void main(String[] args){
