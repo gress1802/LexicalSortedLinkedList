@@ -102,11 +102,15 @@ public class SortedStringList {
     public String toString(){ //Making debugging easier
         String ret = "The list in ascending lexical order:";
         Node temp = heads[0];
+        ret = ret + heads[0];
+
         while(temp.next[0]!= null){
             ret = ret + temp.data;
         }
         ret = ret + "\n";
         temp = heads[1];
+
+        ret = ret + heads[1];
         while(temp.next[1] != null){
             ret = ret + temp.data;
         }
@@ -116,6 +120,7 @@ public class SortedStringList {
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
         newList.insert("Joe");
+        System.out.println(newList);
     }
  
 }
