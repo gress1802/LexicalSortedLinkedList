@@ -32,7 +32,7 @@ public class SortedStringList {
         //if a string matching s is not in the list, insert s into the list maintaining the 
         //ascending lexical and descending length orders 
         //otherwise no changes to the list are made 
-        if(heads[0] == null && heads[1] == null){ //If the list is empty 
+        if(heads[0] == null || heads[1] == null){ //If the list is empty 
             heads[0] = heads[1] = new Node(s,null,null); //Creates the first node in the list
                                                                 //This node is both heads
         }else if(heads[0].next == null && heads[1].next == null ){ //If there is only one node in the list
@@ -103,12 +103,15 @@ public class SortedStringList {
         String ret = "The list in ascending lexical order:";
         Node temp = heads[0];
 
+        ret = ret + temp.data;
+
         while(temp.next[0]!= null){
             ret = ret + temp.data;
             temp = temp.next[0];
         }
-        ret = ret + "\n";
         temp = heads[1];
+
+        ret = ret + "\n The list in descending length order:" + temp.data;
 
         while(temp.next[1] != null){
             ret = ret + temp.data;
