@@ -82,17 +82,21 @@ public class SortedStringList {
                 temp0.next[0] = new Node(s,temp2,null);
                 //Now finding what next[1] will be for this node
                 Node temp3 = heads[1];
-                if(heads[1].data.length()<s.length()){ //setting the new node containing s as head[1]
+/*                 if(heads[1].data.length()<s.length()){ //setting the new node containing s as head[1]
                     heads[1] = temp0.next[0];
                     heads[1].next[1] = temp3;
-                }else{ 
-                    while(temp3.next[1] != null && temp3.next[1].data.length()>temp0.next[0].data.length()){
-                        temp3 = temp3.next[1];
-                        if(temp3.next[1] == null){ //end of list
-                            temp3.next[1] = temp0;
-                        }
+                }else{
+                    temp3 = heads[0]; 
+                    while(temp3.next[0] != temp0.next[0]){
+                        temp3 = temp3.next[0];
                     }
-                    temp0.next[1] = temp3;
+                    temp1 = heads[1];
+                    while(temp3.next[1] != temp3){ 
+                        temp3 = temp3.next[1];
+
+                    }*/
+
+
                 }
             }
 
