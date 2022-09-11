@@ -35,50 +35,64 @@ public class SortedStringList {
         if(heads[0] == null || heads[1] == null){ //If the list is empty 
             heads[0] = heads[1] = new Node(s,null,null); //Creates the first node in the list
                                                                 //This node is both heads
-        }else if(heads[0].next == null && heads[1].next == null ){ //If there is only one node in the list
+        }else if(heads[0].next[0] == null){ //If there is only one node in the list
             //Puts the new node in list with regards to heads[0]
-            if(heads[0].data.compareTo(s)<0){ //value is - therefore the new node containing s comes after heads[0]
+            if(heads[0].data.compareTo(s)<=0){ //value is - therefore the new node containing s comes after heads[0]
                 heads[0].next[0] = new Node(s,null,null);
             }else{ //the value is + therefore the new node containing s becomes heads[0]
-                Node temp = heads[0]; //temperary value for heads[0]
+                Node temp = heads[0];
                 heads[0] = new Node(s,temp,null); //Node containing s is now heads[0] and its next reference (next[0]) is the previous heads[0]
-            }  
+            }
+            
             //Changing to make sure heads[1] is accurate too
-            if(heads[1].next[1].data.length() > heads[1].data.length()){
+            if(heads[0].next[0].data.length() > heads[0].data.length()){
                 heads[1] = heads[0].next[0];
                 heads[1].next[1] = heads[0];
+            }else if(heads[0].next[0].data.length()<= heads[0].data.length()){
+                heads[1].next[1] = heads[0].next[0];
             }
+
                 
             
         
         }else{
-            //inserting changing the ascending lexical order list
-            Node temp = heads[0];
-            if(heads[0].data.compareTo(s)<0){//this is the case where the node containing s must be the head
-                heads[0] = new Node(s,temp.next[0],null);
+
+            Node temp0 = heads[0];
+            Node temp1 = heads[1];
+            if(heads[0].data.compareTo(s)>=0){//this is the case where the node containing s must be the head
+                heads[0] = new Node(s,temp0,null);
                 //insert part that sets what next[1] is
+                if(heads[1].data.length()<=s.length()){
+                    heads[1] = new Node(s,temp1,null);
+                }else{
+                    while(temp1.next[1] != null && s.length()<temp1.next[1].data.length()){
+                        temp1 = temp1.next[1];
+                    }
+                    temp1.next[1] = new Node(s,null,null);
+                }
             }
             else{
-                while(temp.next[0].data.compareTo(s)>0){ //all other cases
-                    temp = temp.next[0];
-                    if(temp.next[0] == null){ //end of the list
-                        temp.next[0] = new Node(s,null,null);
+                while(temp0.next[0].data.compareTo(s)>0){ //all other cases
+                    temp0 = temp0.next[0];
+                    if(temp0.next[0] == null){ //end of the list
+                        temp0.next[0] = new Node(s,null,null);
                     }
                 }
-                Node temp2 = temp.next[0]; //adds node at the correct position in the list
-                temp.next[0] = new Node(s,temp2,null);
+                Node temp2 = temp0.next[0]; //adds node at the correct position in the list
+                temp0.next[0] = new Node(s,temp2,null);
                 //Now finding what next[1] will be for this node
                 Node temp3 = heads[1];
                 if(heads[1].data.length()<s.length()){ //setting the new node containing s as head[1]
-                    heads[1] = temp.next[0];
+                    heads[1] = temp0.next[0];
+                    heads[1].next[1] = temp3;
                 }else{ 
-                    while(temp3.next[1].data.length()>s.length()){
+                    while(temp3.next[1] != null && temp3.next[1].data.length()>temp0.next[0].data.length()){
                         temp3 = temp3.next[1];
                         if(temp3.next[1] == null){ //end of list
-                            temp3.next[1] = temp;
+                            temp3.next[1] = temp0;
                         }
                     }
-                    temp.next[1] = temp3;
+                    temp0.next[1] = temp3;
                 }
             }
 
@@ -106,7 +120,7 @@ public class SortedStringList {
         ret = ret + temp.data;
 
         while(temp.next[0]!= null){
-            ret = ret + temp.data;
+            ret = ret + ", " + temp.next[0].data;
             temp = temp.next[0];
         }
         temp = heads[1];
@@ -114,7 +128,7 @@ public class SortedStringList {
         ret = ret + "\n The list in descending length order:" + temp.data;
 
         while(temp.next[1] != null){
-            ret = ret + temp.data;
+            ret = ret + ", " + temp.next[1].data;
             temp = temp.next[1];
         }
         return ret; 
@@ -122,6 +136,9 @@ public class SortedStringList {
 
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
+        newList.insert("Joe");
+        newList.insert("Zach");
+        newList.insert("Be");
         newList.insert("Joe");
         System.out.println(newList);
     }
