@@ -133,7 +133,7 @@ public class SortedStringList {
         newList.insert("Joe");
         newList.insert("Zach");
         newList.insert("Be");
-        newList.insert("Joe");
+        newList.insert("Be");
         System.out.println(newList);
     }
  
