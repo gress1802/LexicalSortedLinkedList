@@ -81,10 +81,7 @@ public class SortedStringList {
                 Node temp2 = temp0.next[0]; //adds node at the correct position in the list
                 temp0.next[0] = new Node(s,temp2,null);
                 //Now finding what next[1] will be for this node
-                Node temp3 = heads[1];
-                while(temp3.next[1] != temp3){
-                    temp3 = temp3.next[1];
-                }
+                
             }
 
         }
