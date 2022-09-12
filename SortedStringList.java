@@ -78,10 +78,16 @@ public class SortedStringList {
                         temp0.next[0] = new Node(s,null,null);
                     }
                 }
-                Node temp2 = temp0.next[0]; //adds node at the correct position in the list
-                temp0.next[0] = new Node(s,temp2,null);
-                //Now finding what next[1] will be for this node
+                //figure out next[1] here
+                while(temp1.next[1].data.length() > s.length()){
+                    temp1 = temp1.next[1];
+                }
                 
+                Node temp2 = temp0.next[0]; //adds node at the correct position in the list
+                temp0.next[0] = new Node(s,temp2,temp1.next[1]);
+                temp1.next[1] = temp0.next[0];
+                //Now finding what next[1] will be for this node
+            
             }
 
         }
