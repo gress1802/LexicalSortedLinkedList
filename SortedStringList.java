@@ -28,10 +28,11 @@ public class SortedStringList {
     public SortedStringList() { 
         heads = new Node[2]; //no sentinel nodes
     } 
-    public void insert(String s) { 
+    public void insert(String s) {
         //if a string matching s is not in the list, insert s into the list maintaining the 
         //ascending lexical and descending length orders 
-        //otherwise no changes to the list are made 
+        //otherwise no changes to the list are made
+        s = s.toLowerCase(); 
         if(heads[0] == null || heads[1] == null){ //If the list is empty 
             heads[0] = heads[1] = new Node(s,null,null); //Creates the first node in the list
                                                                 //This node is both heads
@@ -78,9 +79,13 @@ public class SortedStringList {
                         temp0.next[0] = new Node(s,null,null);
                     }
                 }
+    
                 //figure out next[1] here
                 while(temp1.next[1].data.length() > s.length()){
                     temp1 = temp1.next[1];
+                    if(temp1.next[1] == null){
+                        break;
+                    }
                 }
                 
                 Node temp2 = temp0.next[0]; //adds node at the correct position in the list
@@ -132,7 +137,8 @@ public class SortedStringList {
         SortedStringList newList = new SortedStringList();
         newList.insert("Joe");
         newList.insert("Zach");
-        newList.insert("Be");
+        newList.insert("be");
+        newList.insert("be");
         newList.insert("Be");
         System.out.println(newList);
     }
