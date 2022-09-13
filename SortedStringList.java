@@ -50,6 +50,7 @@ public class SortedStringList {
                 heads[1] = heads[0].next[0];
                 heads[1].next[1] = heads[0];
             }else if(heads[0].next[0].data.length()<= heads[0].data.length()){
+                heads[1] = heads[0];
                 heads[1].next[1] = heads[0].next[0];
             }
 
@@ -73,24 +74,29 @@ public class SortedStringList {
                 }
             }
             else{
-                while(temp0.next[0].data.compareTo(s)>0){ //all other cases
+                while(temp0.next[0].data.compareTo(s)<0){ //all other cases
                     temp0 = temp0.next[0];
                     if(temp0.next[0] == null){ //end of the list
-                        temp0.next[0] = new Node(s,null,null);
-                    }
-                }
-    
-                //figure out next[1] here
-                while(temp1.next[1].data.length() > s.length()){
-                    temp1 = temp1.next[1];
-                    if(temp1.next[1] == null){
                         break;
                     }
                 }
-                
-                Node temp2 = temp0.next[0]; //adds node at the correct position in the list
-                temp0.next[0] = new Node(s,temp2,temp1.next[1]);
-                temp1.next[1] = temp0.next[0];
+                Node temp2 = temp0.next[0];
+                //figure out next[1] here
+                if(s.length()>heads[1].data.length()){
+                    temp0.next[0] = new Node(s,temp2,heads[1]);
+                    Node j = temp0.next[0];
+                    heads[1] = j;
+                    
+                }else{
+                    while(temp1.next[1].data.length() > s.length()){
+                        temp1 = temp1.next[1];
+                        if(temp1.next[1] == null){
+                            break;
+                        }
+                    }    
+                    temp0.next[0] = new Node(s,temp2,temp1.next[1]);
+                    temp1.next[1] = temp0.next[0];
+                }
                 //Now finding what next[1] will be for this node
             
             }
@@ -135,11 +141,11 @@ public class SortedStringList {
 
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
-        newList.insert("Joe");
-        newList.insert("Zach");
-        newList.insert("be");
-        newList.insert("be");
-        newList.insert("Be");
+        newList.insert("a");
+        newList.insert("baa");
+        newList.insert("ca");
+//        newList.insert("be");
+//        newList.insert("Be");
         System.out.println(newList);
     }
  
