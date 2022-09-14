@@ -93,7 +93,8 @@ public class SortedStringList {
                         if(temp1.next[1] == null){
                             break;
                         }
-                    }    
+                    }
+                    //Work on fixing the case right now    
                     temp0.next[0] = new Node(s,temp2,null);
                     Node insert = temp0.next[0];
                     Node where = temp1.next[1];
@@ -150,7 +151,7 @@ public class SortedStringList {
         newList.insert("baa");
         newList.insert("a");
         newList.insert("ca");
-//        newList.insert("a");
+        newList.insert("a");
 //        newList.insert("Be");
         System.out.println(newList);
     }
