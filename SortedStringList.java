@@ -95,9 +95,12 @@ public class SortedStringList {
                         }
                     }    
                     temp0.next[0] = new Node(s,temp2,null);
-//                    temp1.next[1] = temp0.next[0];
-//                    Node temp3 = temp1.next[1];
-//                    temp3.next[1] = temp0;
+                    Node insert = temp0.next[0];
+                    Node where = temp1.next[1];
+                    temp1.next[1] = insert;
+                    insert.next[1] = where;
+                    
+
             
                 }
                 //Now finding what next[1] will be for this node
