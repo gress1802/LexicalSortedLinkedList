@@ -94,8 +94,11 @@ public class SortedStringList {
                             break;
                         }
                     }    
-                    temp0.next[0] = new Node(s,temp2,temp1.next[1]);
+                    temp0.next[0] = new Node(s,temp2,null);
                     temp1.next[1] = temp0.next[0];
+                    Node temp3 = temp1.next[1];
+                    temp3.next[1] = temp0;
+            
                 }
                 //Now finding what next[1] will be for this node
             
@@ -141,10 +144,10 @@ public class SortedStringList {
 
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
-        newList.insert("a");
         newList.insert("baa");
+        newList.insert("a");
         newList.insert("ca");
-//        newList.insert("be");
+        newList.insert("a");
 //        newList.insert("Be");
         System.out.println(newList);
     }
