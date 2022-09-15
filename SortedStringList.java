@@ -104,7 +104,6 @@ public class SortedStringList {
 
             
                 }
-                //Now finding what next[1] will be for this node
             
             }
 
