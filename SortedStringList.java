@@ -126,7 +126,7 @@ public class SortedStringList {
         //if a string matching s is in the list, remove s from the list maintaining the 
         //ascending lexical and descending length orders 
         //otherwise no changes to the list are made 
-        while(heads[0].data.equals(s)){ //if the removal is on heads[0]
+        while(heads[0] != null && heads[0].data.equals(s)){ //if the removal is on heads[0]
             heads[0] = heads[0].next[0];
             if(heads[1].data.equals(s)){
                 heads[1] = heads[1].next[1];
@@ -143,16 +143,19 @@ public class SortedStringList {
         }
 
         while(temp0.next[0] != null){
+            if(heads[0] == null){
+                break;
+            }
             if(temp0.next[0].data.equals(s)){
                 temp0.next[0] = temp0.next[0].next[0]; //updates heads[0] list
                 if(heads[1].data.equals(s)){
                     heads[1] = heads[1].next[1];
                 }else{
-                    if(temp1.next[1] == null){ //if at end of list
-                        break;
-                    }
-                    while(!temp1.next[1].data.equals(s)){
+                    while(temp1.next[1] != null && !temp1.next[1].data.equals(s)){
                         temp1 = temp1.next[1];
+                    }
+                    if(temp1.next[1] == null){//end of list
+                        break;
                     }
                     if(temp1.next[1].next[1] == null){
                         temp1.next[1] = null;
@@ -169,32 +172,40 @@ public class SortedStringList {
     }
     public void ascPrint() { 
         //print a comma delimited list of the strings in ascending lexical order
-         String ret = "The list in ascending lexical order:";
-        Node temp = heads[0];
+        if(heads[0] == null){
+            System.out.println("The list in ascending lexical order:");
+        }else{
+            String ret = "The list in ascending lexical order:";
+            Node temp = heads[0];
 
-        ret = ret + temp.data;
+            ret = ret + temp.data;
 
-        while(temp.next[0]!= null){
-            ret = ret + ", " + temp.next[0].data;
-            temp = temp.next[0];
+            while(temp.next[0]!= null){
+                ret = ret + ", " + temp.next[0].data;
+                temp = temp.next[0];
+            }
+            System.out.println(ret);
         }
-        System.out.println(ret);
     } 
  
     public void descPrint() { 
         //print a comma delimited list of the strings in descending length order
-        Node temp = heads[1];
+        if(heads[1] == null){
+            System.out.println("The list in descending length order:");
+        }else{
+            Node temp = heads[1];
 
-        String ret = "The list in descending length order:" + temp.data;
+            String ret = "The list in descending length order:" + temp.data;
 
-        while(temp.next[1] != null){
-            ret = ret + ", " + temp.next[1].data;
-            temp = temp.next[1];
+            while(temp.next[1] != null){
+                ret = ret + ", " + temp.next[1].data;
+                temp = temp.next[1];
+            }
+            System.out.println(ret);
         }
-        System.out.println(ret);
     }
 
-    public String toString(){ //Making debugging easier
+    public String toString(){ //Making debugging easier Thi
         String ret = "The list in ascending lexical order:";
         Node temp = heads[0];
 
@@ -217,14 +228,6 @@ public class SortedStringList {
 
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
-//        newList.insert("ca");
-        newList.insert("baa");
-        newList.insert("a");
-        newList.insert("b");
-        newList.insert("a");
-//        newList.insert("a");
-//        newList.insert("b");
-        newList.remove("a");
         newList.ascPrint();
         newList.descPrint();
     }
