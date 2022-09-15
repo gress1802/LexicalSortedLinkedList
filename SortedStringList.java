@@ -104,7 +104,6 @@ public class SortedStringList {
                             break;
                         }
                     }
-                    //Work on fixing the case right now    
                     temp0.next[0] = new Node(s,temp2,null);
                     Node insert = temp0.next[0];
                     Node where = temp1.next[1];
@@ -176,18 +175,9 @@ public class SortedStringList {
 
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
-        newList.insert("Baker");
-        newList.insert("Davis");
-        newList.insert("Faut");
-        newList.insert("Hickson");
-        newList.insert("Kamenshek");
-        newList.insert("Kurys");
-        newList.insert("Lessing");
-        newList.insert("Nesbitt");
-        newList.insert("Perlick");
-        newList.insert("Richard");
-        newList.insert("Sams");
-        newList.insert("Wisniewski");
+        newList.insert("ca");
+        newList.insert("baa");
+        newList.insert("a");
         newList.ascPrint();
         newList.descPrint();
     }
