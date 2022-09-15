@@ -120,10 +120,52 @@ public class SortedStringList {
 
     } 
  
-    public void remove(int d) { 
+    public void remove(String s) { 
+        Node temp1 = heads[1];
+        Node temp0 = heads[0];
         //if a string matching s is in the list, remove s from the list maintaining the 
         //ascending lexical and descending length orders 
         //otherwise no changes to the list are made 
+        while(heads[0].data.equals(s)){ //if the removal is on heads[0]
+            heads[0] = heads[0].next[0];
+            if(heads[1].data.equals(s)){
+                heads[1] = heads[1].next[1];
+            }else{
+                while(!temp1.next[1].data.equals(s)){
+                    temp1 = temp1.next[1];
+                }
+                if(temp1.next[1].next[1] == null){
+                    temp1.next[1] = null;
+                }else{
+                    temp1.next[1] = temp1.next[1].next[1];
+                }
+            }
+        }
+
+        while(temp0.next[0] != null){
+            if(temp0.next[0].data.equals(s)){
+                temp0.next[0] = temp0.next[0].next[0]; //updates heads[0] list
+                if(heads[1].data.equals(s)){
+                    heads[1] = heads[1].next[1];
+                }else{
+                    if(temp1.next[1] == null){ //if at end of list
+                        break;
+                    }
+                    while(!temp1.next[1].data.equals(s)){
+                        temp1 = temp1.next[1];
+                    }
+                    if(temp1.next[1].next[1] == null){
+                        temp1.next[1] = null;
+                    }else{
+                        temp1.next[1] = temp1.next[1].next[1];
+                    }
+                }
+            }else{
+                temp0 = temp0.next[0];
+            }
+
+        }
+
     }
     public void ascPrint() { 
         //print a comma delimited list of the strings in ascending lexical order
@@ -175,9 +217,14 @@ public class SortedStringList {
 
     public static void main(String[] args){
         SortedStringList newList = new SortedStringList();
-        newList.insert("ca");
+//        newList.insert("ca");
         newList.insert("baa");
         newList.insert("a");
+        newList.insert("b");
+        newList.insert("a");
+//        newList.insert("a");
+//        newList.insert("b");
+        newList.remove("a");
         newList.ascPrint();
         newList.descPrint();
     }
