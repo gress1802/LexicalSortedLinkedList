@@ -1,6 +1,3 @@
-import java.io.*; 
-import java.util.*; 
-
 /*  
  *  Joseph Gress CS340
  *  Programming Project 1
@@ -225,11 +222,4 @@ public class SortedStringList {
         }
         return ret; 
     }
-
-    public static void main(String[] args){
-        SortedStringList newList = new SortedStringList();
-        newList.ascPrint();
-        newList.descPrint();
-    }
- 
 }
