@@ -180,15 +180,15 @@ public class SortedStringList {
         newList.insert("Baker");
         newList.insert("Davis");
         newList.insert("Faut");
-//        newList.insert("Hickson");
-//        newList.insert("Kamenshek");
-//        newList.insert("Kurys");
-//        newList.insert("Lessing");
-//        newList.insert("Nesbitt");
-//        newList.insert("Perlick");
-//        newList.insert("Richard");
-//        newList.insert("Sams");
-//        newList.insert("Wisniewski");
+        newList.insert("Hickson");
+        newList.insert("Kamenshek");
+        newList.insert("Kurys");
+        newList.insert("Lessing");
+        newList.insert("Nesbitt");
+        newList.insert("Perlick");
+        newList.insert("Richard");
+        newList.insert("Sams");
+        newList.insert("Wisniewski");
         newList.ascPrint();
         newList.descPrint();
     }
