@@ -1,6 +1,3 @@
-import java.io.*; 
-import java.util.*; 
-
 /*  
  *  Joseph Gress CS340
  *  Programming Project 1
@@ -104,7 +101,6 @@ public class SortedStringList {
                             break;
                         }
                     }
-                    //Work on fixing the case right now    
                     temp0.next[0] = new Node(s,temp2,null);
                     Node insert = temp0.next[0];
                     Node where = temp1.next[1];
@@ -121,39 +117,92 @@ public class SortedStringList {
 
     } 
  
-    public void remove(int d) { 
+    public void remove(String s) { 
+        Node temp1 = heads[1];
+        Node temp0 = heads[0];
         //if a string matching s is in the list, remove s from the list maintaining the 
         //ascending lexical and descending length orders 
         //otherwise no changes to the list are made 
+        while(heads[0] != null && heads[0].data.equals(s)){ //if the removal is on heads[0]
+            heads[0] = heads[0].next[0];
+            if(heads[1].data.equals(s)){
+                heads[1] = heads[1].next[1];
+            }else{
+                while(!temp1.next[1].data.equals(s)){
+                    temp1 = temp1.next[1];
+                }
+                if(temp1.next[1].next[1] == null){
+                    temp1.next[1] = null;
+                }else{
+                    temp1.next[1] = temp1.next[1].next[1];
+                }
+            }
+        }
+
+        while(temp0.next[0] != null){
+            if(heads[0] == null){
+                break;
+            }
+            if(temp0.next[0].data.equals(s)){
+                temp0.next[0] = temp0.next[0].next[0]; //updates heads[0] list
+                if(heads[1].data.equals(s)){
+                    heads[1] = heads[1].next[1];
+                }else{
+                    while(temp1.next[1] != null && !temp1.next[1].data.equals(s)){
+                        temp1 = temp1.next[1];
+                    }
+                    if(temp1.next[1] == null){//end of list
+                        break;
+                    }
+                    if(temp1.next[1].next[1] == null){
+                        temp1.next[1] = null;
+                    }else{
+                        temp1.next[1] = temp1.next[1].next[1];
+                    }
+                }
+            }else{
+                temp0 = temp0.next[0];
+            }
+
+        }
+
     }
     public void ascPrint() { 
         //print a comma delimited list of the strings in ascending lexical order
-         String ret = "The list in ascending lexical order:";
-        Node temp = heads[0];
+        if(heads[0] == null){
+            System.out.println("The list in ascending lexical order:");
+        }else{
+            String ret = "The list in ascending lexical order:";
+            Node temp = heads[0];
 
-        ret = ret + temp.data;
+            ret = ret + temp.data;
 
-        while(temp.next[0]!= null){
-            ret = ret + ", " + temp.next[0].data;
-            temp = temp.next[0];
+            while(temp.next[0]!= null){
+                ret = ret + ", " + temp.next[0].data;
+                temp = temp.next[0];
+            }
+            System.out.println(ret);
         }
-        System.out.println(ret);
     } 
  
     public void descPrint() { 
         //print a comma delimited list of the strings in descending length order
-        Node temp = heads[1];
+        if(heads[1] == null){
+            System.out.println("The list in descending length order:");
+        }else{
+            Node temp = heads[1];
 
-        String ret = "The list in descending length order:" + temp.data;
+            String ret = "The list in descending length order:" + temp.data;
 
-        while(temp.next[1] != null){
-            ret = ret + ", " + temp.next[1].data;
-            temp = temp.next[1];
+            while(temp.next[1] != null){
+                ret = ret + ", " + temp.next[1].data;
+                temp = temp.next[1];
+            }
+            System.out.println(ret);
         }
-        System.out.println(ret);
     }
 
-    public String toString(){ //Making debugging easier
+    public String toString(){ //Making debugging easier Thi
         String ret = "The list in ascending lexical order:";
         Node temp = heads[0];
 
