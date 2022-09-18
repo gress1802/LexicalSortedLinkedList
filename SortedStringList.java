@@ -222,23 +222,4 @@ public class SortedStringList {
         }
         return ret; 
     }
-
-    public static void main(String[] args){
-        SortedStringList newList = new SortedStringList();
-        newList.insert("Baker");
-        newList.insert("Davis");
-        newList.insert("Faut");
-        newList.insert("Hickson");
-        newList.insert("Kamenshek");
-        newList.insert("Kurys");
-        newList.insert("Lessing");
-        newList.insert("Nesbitt");
-        newList.insert("Perlick");
-        newList.insert("Richard");
-        newList.insert("Sams");
-        newList.insert("Wisniewski");
-        newList.ascPrint();
-        newList.descPrint();
-    }
- 
 }
